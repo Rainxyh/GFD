@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2bbdbaf4-2383-4777-8b6e-60e0fff270e0" name="402server">
+        <fileTransfer rootFolder="/home/rain/PythonProject/GFD" accessType="SFTP" host="127.0.0.1" port="12345" sshConfigId="8738c084-aae2-4c9f-88da-57344f68616b" sshConfig="rain@127.0.0.1:12345 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
