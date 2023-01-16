@@ -1,9 +1,11 @@
 import pywt
 import numpy as np
 import matplotlib.pyplot as plt
-
 from skimage.restoration import denoise_wavelet
-from data.swpt import SWPT
+
+import sys
+sys.path.append('~/Github/GFD/data')
+from swpt import SWPT
 
 
 def signal2matrix(signal, n=3):
@@ -134,17 +136,11 @@ def show_origin_denoise_refactor(data_noise):
 
 
 if __name__ == '__main__':
-    # fs = 256
-    # f1 = 10
-    # f2 = 30
-    # t = np.linspace(0, 1, fs)
-    # signal = np.sin(2 * np.pi * f1 * t) + np.sin(2 * np.pi * f2 * t)
-    # wavelet_tree_plt(signal)
-    #
-    # model = SWPT(max_level=3)
-    # model.decompose(signal)
-    # res = model.get_level(3)
-    # plt.pcolor(res)
-    # plt.show()
-
+    file = pd.read_csv("./gearbox/b30hz0.csv", skiprows=20, header=None)
+    data = []
+    for i in range(4):
+        data.append(file[i].ravel())
+    data = np.array(data)
+    
+    signal2matrix(data[i])
     pass

@@ -1,0 +1,81 @@
+﻿PeerJ Computer Science
+JOURNAL OF SUPERCOMPUTING
+NEURAL PROCESSING LETTERS
+ieee access，applied science，sensors，plos one
+JOURNAL OF INFORMATION SCIENCE
+
+Baseline: CNN, 1D-CNN, GRU, BiGRU, 1D-convLSTM, CNN-BiGRU
+
+Planetary gearbox fault diagnosis using bidirectional-convolutional LSTM networks
+信号切分示意图
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 卷积单元处给出gru cell 和 weighted gate图
+Feature spacec处给出卷积结构图示
+
+实验设置中给出CNN-GRU和ConvGRU with respect to input data and feature space
+
+
+Multisensor data fusion for gearbox fault diagnosis using 2-D convolutional neural network and motor current signature analysis
+混淆矩阵
+使用表征方法与不使用表征方法
+信号切分示意图
+
+
+
+
+
+
+
+全连接层向量可视化
+
+An adaptive spatiotemporal feature learning approach for fault
+diagnosis in complex systems
+流程图、热力图
+
+
+
+Fault diagnosis of wind turbine based on Long Short-term memory networks
+不同比例数据集折线图 多传感器
+多传感器条形图 平均
+
+Intelligent Fault Diagnosis for Planetary Gearbox Using Time-Frequency Representation and Deep Reinforcement Learning
+结构图、流程图
+输入张量可视化图
+size change of fc layer
+
+Classification accuracy change of different training episode.
+(a) OA of different training episode. (b) Change of Std.
+
+different FC1 layers
+
+
+Fault diagnosis for small samples based on attention mechanism
+conditions with 𝛼 = 0.1 and SNR = −4∼6 dB
+
+
+小样本训练 图表
+
+噪声环境 给个表
+
+参数数量 表
+
+占用内存 表
+
+花费时间
+
+正确率等评价指标
+
+
+

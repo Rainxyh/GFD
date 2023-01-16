@@ -7,8 +7,10 @@ import seaborn as sns
 from pyts.image import RecurrencePlot
 from pyts.image import MarkovTransitionField
 from pyts.image import GramianAngularField
-from data.gearbox_data import GearboxData
-from data.wavelet_transform import signal2matrix
+
+import sys
+sys.path.append('~/Github/GFD/data')
+from wavelet_transform import signal2matrix
 
 '''
 读取时间序列的数据
@@ -83,7 +85,7 @@ def gramian_angular_field(X):
     plt.tight_layout()
     plt.show()
 
-def CWT_time_frequency_diagram(data, save_path='./', specgram_path='./', heatmap_path='./'):
+def CWT_time_frequency_diagram(data, save_path='./fig/', specgram_name='specgram.png', heatmap_name='heatmap.png'):
     data = data.reshape(data.shape[-1])
     sampling_rate = data.shape[-1]
     t = np.arange(0, 1.0, 1.0 / sampling_rate)
@@ -110,12 +112,12 @@ def CWT_time_frequency_diagram(data, save_path='./', specgram_path='./', heatmap
     plt.xlabel("time(s)")
     plt.subplots_adjust(hspace=0.4)
     # plt.show()
-    plt.savefig(save_path)
+    # plt.savefig(save_path)
 
     plt.subplots()
     plt.specgram(data, NFFT=256, Fs=4096, noverlap=0)
     # plt.show()
-    plt.savefig(specgram_path)
+    plt.savefig(save_path + 'specgram/' + specgram_name)
 
     matrix = signal2matrix(data, 6)
     fig, ax = plt.subplots(figsize=(9, 9))
@@ -129,7 +131,7 @@ def CWT_time_frequency_diagram(data, save_path='./', specgram_path='./', heatmap
     ax.set_ylabel('freq', fontsize=18)
     ax.set_xlabel('time', fontsize=18)  # 横变成y轴，跟矩阵原始的布局情况是一样的
     # plt.show()
-    plt.savefig(heatmap_path)
+    plt.savefig(save_path + 'heatmap/' + heatmap_name)
 
 if __name__ == '__main__':
     input_tensor = {}
@@ -137,14 +139,17 @@ if __name__ == '__main__':
     filenames = os.listdir(data_dir)
     file_name = [name for name in filenames if name.find('.csv') != -1]  # 文件名
     file_name.sort()
+    sensor_num = 8
     for name in file_name:
         input_tensor[name] = []
         file_path = os.path.join(data_dir, name)
         file = pd.read_csv(file_path, skiprows=20, header=None, sep='\t')
-        for i in range(8):
+        for i in range(sensor_num):
             input_tensor[name].append(file[i].ravel()[:4096])
         input_tensor[name] = np.array(input_tensor[name])
         # input_tensor[name] = torch.from_numpy(input_tensor[name])
 
-    X = input_tensor['Health_20_0.csv'][4].reshape(1, -1)
-    CWT_time_frequency_diagram(X)
+    for name in file_name:
+        for sensor_idx in range(sensor_num):
+            X = input_tensor[name][sensor_idx].reshape(1, -1)
+            CWT_time_frequency_diagram(X, specgram_name='{}-idx{}.png'.format(name, sensor_idx), heatmap_name='{}-idx{}.png'.format(name, sensor_idx).format(name))

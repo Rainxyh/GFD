@@ -10,7 +10,9 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedShuffleSplit  # 随机划分，保证每一类比例相同
 
-from data.wavelet_transform import multi_sensor_signal2cube
+import sys
+sys.path.append('~/Github/GFD/data')
+from wavelet_transform import multi_sensor_signal2cube
 
 class GearboxData(data.Dataset):
     def __init__(self,
